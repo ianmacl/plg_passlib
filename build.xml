@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="plg-passlib" default="build" basedir=".">
+
+	<target name="clean" description="Clean up">
+		<delete dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build" />
+		<delete file="${basedir}/pkg_passlib.tgz" />
+	</target>
+
+	<target name="auth" description="Package Authentication Plugin">
+		<tar destfile="${basedir}/build/plg_auth_passlib.tar.gz" compression="gzip" basedir="${basedir}/authentication/passlib" />
+	</target>
+
+	<target name="user" description="Package User Plugin">
+		<tar destfile="${basedir}/build/plg_user_passlib.tar.gz" compression="gzip" basedir="${basedir}/user/passlib" />
+	</target>
+
+	<target name="package" depends="auth,user" description="Package Combined Package">
+		<tar destfile="${basedir}/pkg_passlib.tar.gz" compression="gzip">
+			<tarfileset dir="${basedir}/build" prefix="">
+				<include name="plg_auth_passlib.tar.gz" />
+				<include name="plg_user_passlib.tar.gz" />
+			</tarfileset>
+			<tarfileset dir="${basedir}" prefix="">
+				<include name="pkg_passlib.xml" />
+			</tarfileset>
+		</tar>
+	</target>
+
+	<target name="build" depends="clean,package" />
+</project>

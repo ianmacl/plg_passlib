@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5">
+	<name>Passlib Authentication</name>
+	<packagename>passlib</packagename>
+	<version>1.0</version>
+	<url>https://github.com/ianmacl/plg_passlib</url>
+	<packager>Ian MacLennan</packager>
+	<packagerurl>https://github.com/ianmacl/plg_passlib</packagerurl>
+	<description>Package of plugins to enable strong password hashing in Joomla! 2.5.</description>
+	<files>
+		<file type="plugin"		id="passlib"		group="auth">plg_auth_passlib.tar.gz</file>
+		<file type="plugin"		id="passlib"		group="user">plg_user_passlib.tar.gz</file>
+	</files>
+</extension>
